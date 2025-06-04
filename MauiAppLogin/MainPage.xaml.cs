@@ -7,6 +7,8 @@
         public MainPage()
         {
             InitializeComponent();
+
+            btnLogout.Text += " - " + Preferences.Default.Get("usuarioValido", "usuario");
         }
 
         private void OnCounterClicked(object sender, EventArgs e)
@@ -19,6 +21,12 @@
                 CounterBtn.Text = $"Clicked {count} times";
 
             SemanticScreenReader.Announce(CounterBtn.Text);
+        }
+
+        private void btnLogout_Clicked(object sender, EventArgs e)
+        {
+            Preferences.Default.Remove("usuarioValido");
+            App.Current.MainPage = new Login();
         }
     }
 

@@ -36,8 +36,8 @@ public partial class Login : ContentPage
 
 			if (valido)
 			{
-				await SecureStorage.Default.SetAsync("usuarioValido", usuarioDigitado.Nome);
-				App.Current.MainPage = new AppShell();
+				Preferences.Default.Set("usuarioValido", usuarioDigitado.Nome);
+                App.Current.MainPage = new AppShell();
 			}
 			else
 			{

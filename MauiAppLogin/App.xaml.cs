@@ -3,11 +3,19 @@ namespace MauiAppLogin
 {
     public partial class App : Application
     {
+  
         public App()
         {
             InitializeComponent();
-
-            MainPage = new Login();
+            string usuario = Preferences.Default.Get("usuarioValido", "");
+            if (usuario.Equals(String.Empty))
+            {
+                MainPage = new Login();
+            }
+            else
+            {
+                MainPage = new AppShell();
+            }
         }
 
         protected override Window CreateWindow(IActivationState? activationState)
